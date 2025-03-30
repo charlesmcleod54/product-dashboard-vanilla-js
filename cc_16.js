@@ -22,3 +22,27 @@ async function fetchProductsAsync() {
         handleError(error);
     }
 }
+
+// Task 4: Display the Products
+function displayProducts(products) {
+    const productContainer = document.getElementById('product-container');
+
+    products.slice(0, 5).forEach(product => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('product');
+
+        const productName = document.createElement('h2');
+        productName.textContent = product.name;
+        productElement.appendChild(productName);
+
+        const productPrice = document.createElement('p');
+        productPrice.textContent = `$${product.price}`;
+        productElement.appendChild(productPrice);
+
+        const productImage = document.createElement('img');
+        productImage.src = product.image;
+        productElement.appendChild(productImage);
+
+        productContainer.appendChild(productElement);
+    });
+}
